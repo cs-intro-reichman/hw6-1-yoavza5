@@ -10,7 +10,23 @@ import java.awt.Color;
 public class Editor2 {
 
 	public static void main (String[] args){
-		//// Replace this comment with your code.
-		//// This function is similar to the main function of Editor1.java			
+		// 1. קריאת הארגומנטים משורת הפקודה
+        // הארגומנט הראשון הוא שם הקובץ
+        String fileName = args[0];
+        // הארגומנט השני הוא הרוחב החדש (צריך להמיר אותו ממחרוזת למספר)
+        int width = Integer.parseInt(args[1]);
+        // הארגומנט השלישי הוא הגובה החדש
+        int height = Integer.parseInt(args[2]);
+
+        // 2. קריאת תמונת המקור מהקובץ
+        Color[][] imageIn = Runigram.read(fileName);
+
+        // 3. יצירת התמונה החדשה והמוקטנת/מוגדלת
+        Color[][] imageOut = Runigram.scaled(imageIn, width, height);
+
+        // 4. הצגת התמונה החדשה
+        // הערה: חובה לקרוא ל-setCanvas לפני display כדי שהחלון ייפתח בגודל הנכון
+        Runigram.setCanvas(imageOut);
+        Runigram.display(imageOut);	
 	}
 }
